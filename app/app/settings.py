@@ -117,13 +117,21 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME', 'letcode'),
+        'USER': config('DB_USER', 'leetcde_owner'),
+        'PASSWORD': config('DB_PASSWORD', 'npg_Wzf0CyF2KSmb'),
+        'HOST': config('DB_HOST', 'estless-hat-a5vszu.neon.tech'),
+        'PORT': config('DB_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': 'require',
+            'connect_timeout': 5,  # 5 sekunddan keyin timeout
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
